@@ -18,11 +18,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-sans bg-white text-gray-900" suppressHydrationWarning>
+      <nav className="bg-gray-100 p-4 shadow-md">
+        <div className="max-w-4xl mx-auto flex space-x-6 text-lg">
+          <a href="/" className="hover:underline">Home</a>
+          <a href="/about" className="hover:underline">About</a>
+          <a href="/projects" className="hover:underline">Projects</a>
+          <a href="/resume" className="hover:underline">Resume</a>
+          <a href="/hobbies" className="hover:underline">Hobbies</a>
+        </div>
+      </nav>
+
+      <main className="p-6 max-w-3xl mx-auto">{children}</main>
       </body>
     </html>
   );
