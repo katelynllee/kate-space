@@ -63,7 +63,7 @@ export default function Home() {
         <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:gap-10">
           <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-200" />
           <div className="grow">
-            <h1 className="text-4xl font-bold tracking-tight">Hi, I'm Katelyn!</h1>
+            <h1 className="text-4xl font-bold tracking-tight">{ "Hi, I'm Katelyn!" }</h1>
             <p className="mt-2 text-lg text-gray-600">bioengineering undergrad / neuro / human-centered projects</p>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-700">
               I am interested in models around memory and motor skills.
