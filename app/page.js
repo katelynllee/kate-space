@@ -1,18 +1,18 @@
 import NavRail from "./nav-rail";
 
 const LINKS = [
-  { label: "Email", href: "mailto:you@illinois.edu" },
-  { label: "GitHub", href: "https://github.com/youruser" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/youruser/" },
+  { label: "Email", href: "mailto:kl65@illinois.edu" },
+  { label: "GitHub", href: "https://github.com/katelynllee" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/katelyn-l-lee/" },
   { label: "Resume", href: "/resume.pdf" },
 ];
 
 const PROJECTS = [
   {
     title: "Fall Risk Classifier",
-    subtitle: "Dry-lab research — EEG & gait",
+    subtitle: "EEG & gait",
     description:
-      "Built a feature pipeline from inertial and EEG signals to classify fall risk; AUC + SHAP for interpretability.",
+      "TBD",
     tags: ["Python", "scikit-learn", "EEG", "Signal Processing"],
     link: "/projects/fall-risk",
   },
@@ -21,7 +21,7 @@ const PROJECTS = [
     subtitle: "Neuroengineering project",
     description:
       "Predicted motor scores with low-cost sensors and a compact transformer; explored transfer learning.",
-    tags: ["PyTorch", "Transformers", "Time Series"],
+    tags: ["TBD"],
     link: "/projects/motor-skill",
   },
 ];
