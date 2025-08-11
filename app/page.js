@@ -1,5 +1,5 @@
-import NavRail from "./nav-rail";
-import BackToTop from "./back-to-top"; 
+import NavRail from "./components/nav-rail";
+import BackToTop from "./components/back-to-top"; 
 import Link from "next/link";
 import Image from "next/image";
 
@@ -230,7 +230,7 @@ export default function Home() {
         </section>
 
         <Container>
-          <footer className="mt-12 py-6 text-xs text-gray-500">
+          <footer className="mt-12 py-6 text-xs text-black-500">
             © {new Date().getFullYear()} Katelyn Lee • Built with Next.js & Tailwind
           </footer>
         </Container>
