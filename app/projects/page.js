@@ -73,6 +73,7 @@ export default function ProjectsPage() {
 
       <BackToTop />
       <div className="mt-24"><Footer /></div>
+      
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
+import SwirlOverlay from "@/components/swirl-overlay";
 import Link from 'next/link';
 
 const geistSans = Geist({
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-dvh bg-[#F6F2FF] text-purple-950`}
         suppressHydrationWarning
       >
+
         {/* Top nav (full width, comfy padding) */}
         <nav className="sticky top-0 z-50 border-b border-purple-100 bg-white/80 backdrop-blur">
           <div className="w-full px-6 md:px-12 py-4 flex items-center justify-center text-purple-900">
@@ -48,6 +50,7 @@ export default function RootLayout({ children }) {
 
         {/* Page content (full width) */}
         <main className="w-full overflow-hidden">
+          <SwirlOverlay />
           {children}
         </main>
       </body>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Footer from "../components/footer";
+import BackToTop from "../components/back-to-top";
  
 /* ---------- Shared bits ---------- */
 function Container({ children }) {
@@ -253,7 +254,7 @@ export default function ResumePage() {
       <div className="mb-50 md:mb-60">
         <ResumeTimeline />
       </div>
-
+      <BackToTop />
       <div className="mt-50 md:mt-60"><Footer /></div>
       
     </main>
