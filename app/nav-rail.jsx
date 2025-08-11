@@ -10,23 +10,39 @@ export default function NavRail({
   ],
   variant = "purple",
   embedded = false,
-}) {
+}) 
+{
+
   const [active, setActive] = useState(null);
 
   useEffect(() => {
     const ids = items.map(i => i.id);
-    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const sections = ids
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+  
     const obs = new IntersectionObserver(
       (entries) => {
-        const top = entries.filter(e => e.isIntersecting)
-          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (top?.target?.id) setActive(top.target.id);
+        // Pick the entry whose TOP is closest to the top of viewport (>=0)
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .map(e => ({ id: e.target.id, top: e.boundingClientRect.top }))
+          .sort((a, b) => Math.abs(a.top) - Math.abs(b.top));
+  
+        if (visible[0]?.id) setActive(visible[0].id);
       },
-      { rootMargin: "-40% 0px -55% 0px", threshold: [0,0.25,0.5,0.75,1] }
+      {
+        root: null,
+        // Trigger when a section's top is within the top 35% of viewport
+        rootMargin: '0px 0px -65% 0px',
+        threshold: [0, 0.01],
+      }
     );
+  
     sections.forEach(s => obs.observe(s));
     return () => obs.disconnect();
   }, [items]);
+  
 
   const color = variant === "purple"
     ? { 
@@ -48,15 +64,17 @@ export default function NavRail({
   return (
     <nav aria-label="Section navigation">
       <div className={`flex flex-col gap-2 ${railClass}`}>
-        {items.map((it) => {
-          const isActive = active === it.id;
-          const base = "w-full rounded-xl px-3 py-2 text-left text-sm transition select-none";
-          return (
-            <a key={it.label} href={it.href}
-               className={base + (isActive ? ` ${color.active} font-medium font-bold` : ` ${color.item} font-bold`)}>
-              {it.label}
-            </a>
-          );
+      {items.map((it) => {
+            const base = "w-full rounded-xl px-3 py-2 text-left text-sm font-bold transition select-none hover:bg-purple-200 text-purple-800";
+            return (
+                <a
+                key={it.label}
+                href={it.href}
+                className={base}
+                >
+                {it.label}
+                </a>
+            );
         })}
       </div>
     </nav>

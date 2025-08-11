@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +11,14 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const merri = Merriweather({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["300","400","700","900"], // thin→black options for titles
 });
 
 export const metadata = {
@@ -39,7 +47,7 @@ export default function RootLayout({ children }) {
         </nav>
 
         {/* Page content (full width) */}
-        <main className="w-full px-4 md:px-20 py-10">
+        <main className="w-full overflow-hidden">
           {children}
         </main>
       </body>
