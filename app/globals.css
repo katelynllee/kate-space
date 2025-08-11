@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Typewriter */
+@keyframes typing {
+    from { width: 0 }
+    to   { width: var(--tw-ch, 24ch) } /* default width; we can override per use */
+  }
+  @keyframes caret {
+    0%, 100% { border-color: transparent }
+    50%      { border-color: currentColor }
+  }
+  /* Utility class */
+  .typewriter {
+    display: inline-block;    /* <— keeps caret tight to the text */
+    width: 0;
+    max-width: fit-content;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .12em solid currentColor;
+    animation:
+      typing var(--tw-type-dur, 2s) steps(var(--tw-type-steps, 24)) both,
+      caret .9s step-end infinite;
+  }

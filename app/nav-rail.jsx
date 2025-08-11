@@ -1,24 +1,24 @@
+// app/nav-rail.jsx
 "use client";
 import { useEffect, useState } from "react";
 
-const ITEMS = [
-  { id: "home",     label: "Home",     href: "#home" },
-  { id: "projects", label: "Projects", href: "#projects" },
-  { id: "about",    label: "About",    href: "#about" },
-  { id: "contact",  label: "Contact",  href: "#contact" },
-  { id: "resume",   label: "Resume",   href: "/resume.pdf", external: true }, // different page/file
-];
-
-export default function NavRail() {
-  const [active, setActive] = useState("home");
+export default function NavRail({
+  items = [
+    { id: "projects", label: "Projects", href: "#projects" },
+    { id: "about",    label: "About",    href: "#about" },
+    { id: "contact",  label: "Contact",  href: "#contact" },
+  ],
+  variant = "purple",
+  embedded = false,
+}) {
+  const [active, setActive] = useState(null);
 
   useEffect(() => {
-    const ids = ["home","projects","about","contact"];
+    const ids = items.map(i => i.id);
     const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
     const obs = new IntersectionObserver(
       (entries) => {
-        const top = entries
-          .filter(e => e.isIntersecting)
+        const top = entries.filter(e => e.isIntersecting)
           .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (top?.target?.id) setActive(top.target.id);
       },
@@ -26,21 +26,34 @@ export default function NavRail() {
     );
     sections.forEach(s => obs.observe(s));
     return () => obs.disconnect();
-  }, []);
+  }, [items]);
+
+  const color = variant === "purple"
+    ? { 
+        rail: "border-purple-800 bg-purple-50/80", 
+        item: "hover:bg-purple-200 text-purple-800 text-bold", 
+        active: "bg-purple-800 text-white" 
+    }
+    : { 
+        rail: "border-blue-600 bg-blue-50/80", 
+        item: "hover:bg-blue-100 text-blue-700", 
+        active: "bg-blue-600 text-white" 
+    };
+
+  // Embedded look = no border, softer background
+  const railClass = embedded
+    ? "bg-purple-50 p-3 rounded-2xl"
+    : `rounded-2xl border-2 ${color.rail} p-2 shadow-sm`;
 
   return (
-    <nav aria-label="Section navigation"
-         className="fixed right-4 top-1/2 z-40 -translate-y-1/2 md:right-6 lg:right-10">
-      <div className="flex flex-col gap-2 rounded-2xl border-2 border-blue-600 bg-blue-50/80 p-2 shadow-sm">
-        {ITEMS.map(it => {
+    <nav aria-label="Section navigation">
+      <div className={`flex flex-col gap-2 ${railClass}`}>
+        {items.map((it) => {
           const isActive = active === it.id;
-          const base = "w-36 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-blue-100";
+          const base = "w-full rounded-xl px-3 py-2 text-left text-sm transition select-none";
           return (
-            <a key={it.label}
-               href={it.href}
-               target={it.external ? "_blank" : undefined}
-               rel={it.external ? "noreferrer" : undefined}
-               className={base + (isActive ? " bg-blue-600 font-medium text-white" : " text-blue-700")}>
+            <a key={it.label} href={it.href}
+               className={base + (isActive ? ` ${color.active} font-medium font-bold` : ` ${color.item} font-bold`)}>
               {it.label}
             </a>
           );

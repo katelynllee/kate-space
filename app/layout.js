@@ -21,18 +21,27 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-sans bg-white text-gray-900" suppressHydrationWarning>
-      <nav className="bg-gray-100 p-4 shadow-md">
-        <div className="max-w-4xl mx-auto flex space-x-6 text-lg">
-          <Link href="/" className="hover:underline">Home</Link>
-          <Link href="/about" className="hover:underline">About</Link>
-          <Link href="/projects" className="hover:underline">Projects</Link>
-          <Link href="/resume" className="hover:underline">Resume</Link>
-          <Link href="/hobbies" className="hover:underline">Hobbies</Link>
-        </div>
-      </nav>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-dvh bg-[#F6F2FF] text-purple-950`}
+        suppressHydrationWarning
+      >
+        {/* Top nav (full width, comfy padding) */}
+        <nav className="sticky top-0 z-50 border-b border-purple-100 bg-white/80 backdrop-blur">
+          <div className="w-full px-6 md:px-12 py-4 flex items-center justify-center text-purple-900">
+            <ul className="flex flex-wrap items-center gap-8 text-lg font-semibold">
+              <li><Link href="/" className="hover:opacity-80">Home</Link></li>
+              <li><Link href="/about" className="hover:opacity-80">About</Link></li>
+              <li><Link href="/projects" className="hover:opacity-80">Projects</Link></li>
+              <li><Link href="/resume" className="hover:opacity-80">Resume</Link></li>
+              <li><Link href="/hobbies" className="hover:opacity-80">Hobbies</Link></li>
+            </ul>
+          </div>
+        </nav>
 
-      <main className="p-6 max-w-3xl mx-auto">{children}</main>
+        {/* Page content (full width) */}
+        <main className="w-full px-4 md:px-20 py-10">
+          {children}
+        </main>
       </body>
     </html>
   );
