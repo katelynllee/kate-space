@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
  
 /* ---------- Shared bits ---------- */
 function Container({ children }) {
