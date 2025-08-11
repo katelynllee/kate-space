@@ -89,7 +89,9 @@ export default function Home() {
   return ( 
   <main className="relative w-full px-4 py-10 text-gray-900 overflow-x-hidden">
      
-    <section id="home" className="relative w-screen left-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden -mt-10 sm:-mt-10">
+    <section id="home" className="relative w-screen left-1/2 -ml-[50vw] -mr-[50vw]
+    overflow-hidden -mt-10 sm:-mt-10
+    min-h-[500px] md:min-h-[500px]">
 
     {/* floral background layer */}
     <Image
@@ -103,7 +105,7 @@ export default function Home() {
     {/* content */}
       <Container>
         {/* create vertical space so the band is visible above/below the card */}
-        <div className="relative z-10 pt-10 md:pt-20 pb-12 md:pb-16">
+        <div className="relative z-10 pt-10 md:pt-20 pb-20 md:pb-20">
           <div className="rounded-2xl border bg-white p-5 sm:p-6 md:p-10 shadow-sm">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start">
               {/* LEFT */}
@@ -173,7 +175,7 @@ export default function Home() {
         <section id="about" className="mt-16 scroll-mt-32 w-full">
           <Container>
             <h2 className="text-3xl font-semibold tracking-tight">About</h2>
-            <div className="mt-3 rounded-2xl border p-6 text-sm leading-7 bg-white ">
+            <div className="mt-6 rounded-2xl border p-6 text-sm leading-7 bg-white ">
               <p className ="text-base md:text-md">I’m a sophomore working on fall risk, memory, and motor skills</p>
               <p className="mt-3 text-base md:text-md">Outside the lab interests: music and photography</p>
               <div className="mt-5">
@@ -213,7 +215,7 @@ export default function Home() {
         <section id="contact" className="mt-16 scroll-mt-32 w-full">
           <Container>
             <h2 className="text-3xl font-semibold tracking-tight">Contact Me</h2>
-            <div className="mt-3 rounded-2xl border p-6 text-sm leading-7 bg-white ">
+            <div className="mt-6 rounded-2xl border p-6 text-sm leading-7 bg-white ">
               <p className="text-base md:text-md">I am open to research, internships, and mentorship chats!</p>
               <div className="mt-4 flex flex-wrap gap-2 text-base md:text-lg">
                 {LINKS.map(l => (
